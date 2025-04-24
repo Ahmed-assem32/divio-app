@@ -24,7 +24,8 @@
         </div>
         <div class="mb-3">
             <label for="">Post Description</label>
-            <textarea class="form-control" name="description" rows="7"></textarea>{{ $post->title }}
+            <textarea class="form-control" name="description" rows="7">{{ $post->description }}</textarea>
+            {{ $post->title }}
         </div>
         <div class="mb-3">
             <label for="">Writer</label>

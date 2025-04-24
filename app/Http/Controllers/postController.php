@@ -9,13 +9,13 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate();
         return view('posts.index', ['posts' => $posts]);
     }
 
     public function home()
     {
-        $posts = Post::all();
+        $posts = Post::paginate();
         return view('home', ['posts' => $posts]);
     }
 
@@ -43,6 +43,16 @@ class PostController extends Controller
         return view('posts.show',['post' => $post]);
     }
 
+
+    public function search(Request $request)
+    {
+        $q=$request->q;
+        $posts = Post::where('description','LIKE','%'. $q . '%')->get();
+        return view('posts.search',['posts'=>$posts]);
+    }
+
+
+
     public function edit($id)
     {
         $post = Post::findOrFail($id);
@@ -66,6 +76,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         Post::destroy($id);
-        return redirect('posts')->with('success', 'Post deleted successfully');
+        return redirect('home')->with('success', 'Post deleted successfully');
     }
 }

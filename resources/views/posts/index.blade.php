@@ -26,7 +26,7 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ Str::limit($post->description, 50) }}</td>
 
-                        <td>{{ $post->user_id}} - {{ $post->created_at->format('Y-m-d') }}</td>
+                        <td>{{ $post->user->name ?? 'Unknown User' }}</td>
 
                         <td>
                             <a href="{{ url('posts/' . $post->id . '/edit') }}" class="btn btn-info">Edit</a>
@@ -43,6 +43,9 @@
 
             </tbody>
         </table>
+        <div>
+            {{ $posts->links() }}
+        </div>
     </div>
     </div>
 @endsection

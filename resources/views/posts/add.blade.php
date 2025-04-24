@@ -5,8 +5,8 @@
         <h1 class="p-3 border text-center my-3"> Add posts</h1>
     </div>
     <div class="col-8 mx-auto">
-    <form action="{{ url('posts') }}" method="POST" class="form">
-        @csrf
+    <form action="{{ route('posts.store') }}" method="POST" class="form">
+    @csrf
         @if ($errors->any())
             <div class="alert alert-danger p-1">
                 <ul>
